@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-base-apps
+  name: istio-apps
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com:shackdan/minikube.git
-    path: apps
+    path: istio
     directory:
       recurse: true
     targetRevision: HEAD
