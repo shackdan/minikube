@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:shackdan/secure-cluster.git
+    repoURL: git@github.com:shackdan/minikube.git
     path: manifests/psa
   destination:
     server: https://kubernetes.default.svc

@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:shackdan/secure-cluster.git
-    path: apps2/namespace-bootstrapper
+    repoURL: git@github.com:shackdan/minikube.git
+    path: apps/namespace-bootstrapper
     targetRevision: HEAD
     directory:
       recurse: true
