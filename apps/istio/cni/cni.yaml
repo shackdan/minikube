@@ -4,13 +4,13 @@ metadata:
   name: istio-cni
   namespace: argocd
   annotations:
-  argocd.argoproj.io/sync-wave: "0"
+  #argocd.argoproj.io/sync-wave: "0"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system
+    namespace: istio-system
   project: default
   source:
     chart: cni
@@ -18,7 +18,12 @@ spec:
     targetRevision: 1.26.2
     helm:
       values: |
-        profile: ambient
+        global:
+          platform: minikube
+        components:
+          cni:
+            enabled: true
+            namespace: istio-system
   syncPolicy:
     automated:
       prune: true

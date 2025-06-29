@@ -4,7 +4,7 @@ metadata:
   name: istiod
   namespace: argocd
   annotations:
-  argocd.argoproj.io/sync-wave: "1"
+  #argocd.argoproj.io/sync-wave: "1"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -24,7 +24,7 @@ spec:
           platform: minikube
           istio_cni:
             enabled: true
-            chained: false  # Set to true if using chained CNI mode
+            chained: true  # Set to true if using chained CNI mode
         
         # CNI configuration
         cni:
