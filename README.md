@@ -1,7 +1,7 @@
 # minikube
 ### Initial Development On Minikube with Colima on MacOs
 colima start --memory 8 --cpu 8
-minikube start --driver=docker --memory=8192 --cpus=8 --force
+minikube start --driver=docker --memory=8192 --cpus=8
 
 ####minikube start --driver=docker --container-runtime=containerd --cpus=8 --memory=8g #works but microservice cart no start
 ##minikube start --driver qemu --network socket_vmnet --cpus=8 --memory=8g #works but istio-cni no start
