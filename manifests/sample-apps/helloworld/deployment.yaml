@@ -3,9 +3,6 @@ kind: Deployment
 metadata:
   name: helloworld
   #namespace: team-a  # or your target namespace
-  annotations:
-    # Enable Istio's automatic health check rewriting
-    sidecar.istio.io/rewriteAppHTTPProbers: "true"
 spec:
   replicas: 1
   selector:
@@ -15,6 +12,8 @@ spec:
     metadata:
       labels:
         app: helloworld
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
       securityContext:
         runAsNonRoot: true
