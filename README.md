@@ -36,6 +36,9 @@ k port-forward svc/istio-ingressgateway -n istio-ingress 8081:80
 istioctl dashboard kiali
 
 
+### Troushooting
+istioctl proxy-config routes istio-ingressgateway-6876cbbff7-nvkhw -n istio-ingress
+
 
 ###
 CLEAN UP
