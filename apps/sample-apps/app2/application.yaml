@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app2
+  namespace: argocd
+  annotations:
+    #argocd.argoproj.io/sync-wave: "4"
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:shackdan/minikube.git
+    path: manifests/sample-apps/app1
+    targetRevision: HEAD
+    helm:
+      values: |
+        customerService:
+          hostname: demo2.thenewtonlab.com
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: team-b
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
