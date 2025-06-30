@@ -17,7 +17,7 @@ spec:
           hostname: demo2.thenewtonlab.com
   destination:
     server: https://kubernetes.default.svc
-    namespace: team-b
+    namespace: app2
   syncPolicy:
     automated:
       prune: true
