@@ -11,7 +11,7 @@ spec:
   http:
     - route:
         - destination:
-            host: {{ .Release.Name }}-service.{{ .Release.Namespace }}.svc.cluster.local
+            host: app3-service.app3.svc.cluster.local
             port:
               number: 80
 
