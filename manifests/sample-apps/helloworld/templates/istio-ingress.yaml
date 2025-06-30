@@ -2,7 +2,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ printf "%s-%s" .Release.Namespace "service" }}
+  name: helloworld-app
 spec:
   hosts:
     - {{ .Values.customerService.hostname }}
@@ -11,7 +11,7 @@ spec:
   http:
     - route:
         - destination:
-            host: app3-service.app3.svc.cluster.local
+            host: helloworld-app.{{ .Release.Namespace }}.svc.cluster.local
             port:
               number: 80
 
