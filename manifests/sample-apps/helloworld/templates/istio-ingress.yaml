@@ -11,7 +11,7 @@ spec:
   http:
     - route:
         - destination:
-            host: helloworld.{{ .Release.Namespace }}.svc.cluster.local
+            host: {{ .Release.Name }}-service.{{ .Release.Namespace }}.svc.cluster.local
             port:
               number: 80
 
