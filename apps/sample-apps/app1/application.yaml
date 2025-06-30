@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com:shackdan/minikube.git
-    path: manifests/manifests/app1
+    path: manifests/sample-apps/app1
     targetRevision: HEAD
     helm:
       values: |
