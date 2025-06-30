@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-app
+  name: app1
   namespace: argocd
   annotations:
     #argocd.argoproj.io/sync-wave: "4"
@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com:shackdan/minikube.git
-    path: manifests/sample-apps/the-app
+    path: manifests/manifests/app1
     targetRevision: HEAD
     helm:
       values: |
