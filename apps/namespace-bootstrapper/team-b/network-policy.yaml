@@ -28,3 +28,4 @@ spec:
           port: 15012  # istiod
         - protocol: TCP
           port: 443    # metrics, CA, or webhooks (optional)
+
