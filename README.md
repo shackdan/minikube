@@ -85,3 +85,6 @@ istioctl proxy-config routes [istio-ingressgateway] -n istio-ingress
 while true; do curl -I http://$GATEWAY_IP; sleep 0.5; done
 
 while true; do curl -I http://10.97.69.155; sleep 0.5; done
+
+
+kubectl get pod web-frontend-5978cf9cc6-tbdzc -n test -o jsonpath='{.status.containerStatuses[?(@.name=="web")].lastState.terminated.exitCode}'
