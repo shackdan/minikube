@@ -1,0 +1,9 @@
+customerService:
+  hostname: demo2.thenewtonlab.com
+resources:
+  requests:
+    cpu: "10m"
+    memory: "32Mi"
+  limits:
+    cpu: "50m"
+    memory: "64Mi"
