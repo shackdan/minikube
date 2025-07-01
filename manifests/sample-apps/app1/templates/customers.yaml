@@ -31,6 +31,7 @@ spec:
         ports:
         - containerPort: 3000
         securityContext:
+          runAsUser: 1000
           allowPrivilegeEscalation: false
           runAsNonRoot: true
           capabilities:
