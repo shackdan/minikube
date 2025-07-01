@@ -79,7 +79,7 @@ istioctl dashboard kiali
 
 ## Troushooting
 ### Check proxy routes
-istioctl proxy-config routes [istio-ingressgateway-pod] -n istio-ingress
+istioctl proxy-config routes $(kubectl get pods -n istio-ingress -o name) -n istio-ingress
 
 
 ## CLEAN UP
