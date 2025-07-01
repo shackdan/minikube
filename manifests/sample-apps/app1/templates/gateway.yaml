@@ -2,11 +2,10 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-ingress
   name: {{ printf "%s-%s" .Release.Namespace "demo-gateway" }}
 spec:
   selector:
-    istio: ingressgateway
+    istio: istio-ingress/ingressgateway
   servers:
   - port:
       number: 80
