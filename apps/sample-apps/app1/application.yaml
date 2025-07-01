@@ -15,9 +15,17 @@ spec:
       values: |
         customerService:
           hostname: demo.thenewtonlab.com
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "32Mi"
+            limits:
+              cpu: "50m"
+              memory: "64Mi"
+
   destination:
     server: https://kubernetes.default.svc
-    namespace: app1
+    namespace: team-b
   syncPolicy:
     automated:
       prune: true
