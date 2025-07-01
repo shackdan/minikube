@@ -35,7 +35,7 @@ spec:
           readOnlyRootFilesystem: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: team-b
+    namespace: app4
   syncPolicy:
     automated:
       prune: true
