@@ -25,7 +25,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: team-b
+    namespace: team-a
   syncPolicy:
     automated:
       prune: true
