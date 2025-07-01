@@ -39,6 +39,7 @@ spec:
         - name: CUSTOMER_SERVICE_URL
           value: "http://customers.{{ .Release.Namespace }}.svc.cluster.local"
         securityContext:
+          runAsUser: 1000
           allowPrivilegeEscalation: false
           runAsNonRoot: true
           capabilities:
