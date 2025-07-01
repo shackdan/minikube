@@ -55,32 +55,38 @@ kubectl apply -f ./bootstrap/root-app.yaml
 ## Add metallb
 minikube addon enable metallb
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
+kubectl rollout status deployment/controller -n metallb
 kubectl apply -f ./manifests/metalLB/ip-pool.yaml
 
 ## Test "external" access
-### Add istio gateway and virtualservice
-kubectl apply -f ./manifest/sample-apps/the-app/gateway.yaml
-kubectl apply -f ./manife/sample-apps/the-app/virtualservice.yaml
 ### port forward
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8081:80
+
+### Deploy Obeervability Tools
+Apply manifests
+```
+kubectl apply -f ./manifests/
+kubectl rollout status deployment/kiali -n istio-system
+```
 
 ### view traffic flow
 Create external traffic buy running curl from local shell
 
-```while true; do curl -I http://10.97.69.155; sleep 0.5; done```
+```while true; do curl -I http://demo2.thenewtonlab.com; sleep 0.5; done```
 
 istioctl dashboard kiali
 
 
 ## Troushooting
 ### Check proxy routes
-istioctl proxy-config routes [istio-ingressgateway] -n istio-ingress
+istioctl proxy-config routes [istio-ingressgateway-pod] -n istio-ingress
 
 
 ## CLEAN UP
 ```minikube delete```
 
 ```colima stop```
+curl -v -H "Host: demo2.thenewtonlab.com" http://<INGRESS_IP>
 
 while true; do curl -I http://$GATEWAY_IP; sleep 0.5; done
 
