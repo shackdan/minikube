@@ -24,7 +24,7 @@ spec:
               memory: "64Mi"
   destination:
     server: https://kubernetes.default.svc
-    namespace: team-a
+    namespace: app3
   syncPolicy:
     automated:
       prune: true
