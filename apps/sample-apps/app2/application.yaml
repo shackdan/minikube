@@ -15,13 +15,6 @@ spec:
       values: |
         customerService:
           hostname: demo2.thenewtonlab.com
-        resources:
-          requests:
-            cpu: "10m"
-            memory: "32Mi"
-          limits:
-            cpu: "50m"
-            memory: "64Mi"
   destination:
     server: https://kubernetes.default.svc
     namespace: app5
@@ -44,3 +37,12 @@ spec:
 ##          seccompProfile:
 ##            type: RuntimeDefault
 ##          readOnlyRootFilesystem: true
+
+
+##        resources:
+##          requests:
+##            cpu: "10m"
+##            memory: "32Mi"
+##          limits:
+##            cpu: "50m"
+##            memory: "64Mi"

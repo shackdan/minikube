@@ -1,0 +1,567 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-frontend-6b55dd8b98-qx2dc
+  generateName: web-frontend-6b55dd8b98-
+  namespace: app3
+  uid: 30faa847-60ee-4870-97ab-f4ce9146d8a9
+  resourceVersion: '54881'
+  generation: 1
+  creationTimestamp: '2025-07-01T19:14:14Z'
+  labels:
+    app: web-frontend
+    pod-template-hash: 6b55dd8b98
+    security.istio.io/tlsMode: istio
+    service.istio.io/canonical-name: web-frontend
+    service.istio.io/canonical-revision: v1
+    version: v1
+  annotations:
+    istio.io/rev: default
+    kubectl.kubernetes.io/default-container: web
+    kubectl.kubernetes.io/default-logs-container: web
+    kubectl.kubernetes.io/restartedAt: '2025-07-01T19:14:14Z'
+    prometheus.io/path: /stats/prometheus
+    prometheus.io/port: '15020'
+    prometheus.io/scrape: 'true'
+    sidecar.istio.io/interceptionMode: REDIRECT
+    sidecar.istio.io/status: >-
+      {"initContainers":["istio-validation"],"containers":["istio-proxy"],"volumes":["workload-socket","credential-socket","workload-certs","istio-envoy","istio-data","istio-podinfo","istio-token","istiod-ca-cert"],"imagePullSecrets":null,"revision":"default"}
+    traffic.sidecar.istio.io/excludeInboundPorts: '15020'
+    traffic.sidecar.istio.io/includeInboundPorts: '*'
+    traffic.sidecar.istio.io/includeOutboundIPRanges: '*'
+  ownerReferences:
+    - apiVersion: apps/v1
+      kind: ReplicaSet
+      name: web-frontend-6b55dd8b98
+      uid: 3738ab22-8c69-4b97-a4ae-d71d54259e53
+      controller: true
+      blockOwnerDeletion: true
+  managedFields:
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2025-07-01T19:14:14Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/restartedAt: {}
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:pod-template-hash: {}
+            f:version: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"3738ab22-8c69-4b97-a4ae-d71d54259e53"}: {}
+        f:spec:
+          f:containers:
+            k:{"name":"web"}:
+              .: {}
+              f:env:
+                .: {}
+                k:{"name":"CUSTOMER_SERVICE_URL"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:ports:
+                .: {}
+                k:{"containerPort":8080,"protocol":"TCP"}:
+                  .: {}
+                  f:containerPort: {}
+                  f:protocol: {}
+              f:resources: {}
+              f:securityContext:
+                .: {}
+                f:allowPrivilegeEscalation: {}
+                f:capabilities:
+                  .: {}
+                  f:drop: {}
+                f:privileged: {}
+                f:readOnlyRootFilesystem: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:serviceAccount: {}
+          f:serviceAccountName: {}
+          f:terminationGracePeriodSeconds: {}
+    - manager: kubelet
+      operation: Update
+      apiVersion: v1
+      time: '2025-07-01T19:14:18Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"PodReadyToStartContainers"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:hostIPs: {}
+          f:initContainerStatuses: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"10.244.0.102"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      subresource: status
+  selfLink: /api/v1/namespaces/app3/pods/web-frontend-6b55dd8b98-qx2dc
+status:
+  phase: Running
+  conditions:
+    - type: PodReadyToStartContainers
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2025-07-01T19:14:16Z'
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2025-07-01T19:14:16Z'
+    - type: Ready
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2025-07-01T19:14:18Z'
+    - type: ContainersReady
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2025-07-01T19:14:18Z'
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2025-07-01T19:14:14Z'
+  hostIP: 192.168.49.2
+  hostIPs:
+    - ip: 192.168.49.2
+  podIP: 10.244.0.102
+  podIPs:
+    - ip: 10.244.0.102
+  startTime: '2025-07-01T19:14:14Z'
+  initContainerStatuses:
+    - name: istio-validation
+      state:
+        terminated:
+          exitCode: 0
+          reason: Completed
+          startedAt: '2025-07-01T19:14:15Z'
+          finishedAt: '2025-07-01T19:14:15Z'
+          containerID: >-
+            docker://1b0f6e6bdad97bc89107f0a07b919d2d2b55cff633c63fb043fcab6cbe77a897
+      lastState: {}
+      ready: true
+      restartCount: 0
+      image: istio/proxyv2:1.26.2
+      imageID: >-
+        docker-pullable://istio/proxyv2@sha256:921c5ce2c5122facd9a25a7f974aaa4d3679cee38cb3f809e10618384fc3ce7f
+      containerID: >-
+        docker://1b0f6e6bdad97bc89107f0a07b919d2d2b55cff633c63fb043fcab6cbe77a897
+      started: false
+      allocatedResources:
+        cpu: 100m
+        memory: 128Mi
+      resources:
+        limits:
+          cpu: '2'
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      volumeMounts:
+        - name: kube-api-access-xgp7z
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          readOnly: true
+          recursiveReadOnly: Disabled
+  containerStatuses:
+    - name: istio-proxy
+      state:
+        running:
+          startedAt: '2025-07-01T19:14:16Z'
+      lastState: {}
+      ready: true
+      restartCount: 0
+      image: istio/proxyv2:1.26.2
+      imageID: >-
+        docker-pullable://istio/proxyv2@sha256:921c5ce2c5122facd9a25a7f974aaa4d3679cee38cb3f809e10618384fc3ce7f
+      containerID: >-
+        docker://37f539f9ce947e989257e4a6d59365156eef759e3afc45365659c83f8aabb761
+      started: true
+      allocatedResources:
+        cpu: 100m
+        memory: 128Mi
+      resources:
+        limits:
+          cpu: '2'
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      volumeMounts:
+        - name: workload-socket
+          mountPath: /var/run/secrets/workload-spiffe-uds
+        - name: credential-socket
+          mountPath: /var/run/secrets/credential-uds
+        - name: workload-certs
+          mountPath: /var/run/secrets/workload-spiffe-credentials
+        - name: istiod-ca-cert
+          mountPath: /var/run/secrets/istio
+        - name: istio-data
+          mountPath: /var/lib/istio/data
+        - name: istio-envoy
+          mountPath: /etc/istio/proxy
+        - name: istio-token
+          mountPath: /var/run/secrets/tokens
+        - name: istio-podinfo
+          mountPath: /etc/istio/pod
+        - name: kube-api-access-xgp7z
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          readOnly: true
+          recursiveReadOnly: Disabled
+    - name: web
+      state:
+        running:
+          startedAt: '2025-07-01T19:14:16Z'
+      lastState: {}
+      ready: true
+      restartCount: 0
+      image: gcr.io/tetratelabs/web-frontend:1.0.0
+      imageID: >-
+        docker-pullable://gcr.io/tetratelabs/web-frontend@sha256:5d4b8a7258c4a1a6354817b16d6a565cb973924de6f3df9b6586e974a7afe990
+      containerID: >-
+        docker://da37a493b536de24d275bfc167f8f445b04e4d72628c8a9526a8c205eb029278
+      started: true
+      resources: {}
+      volumeMounts:
+        - name: kube-api-access-xgp7z
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          readOnly: true
+          recursiveReadOnly: Disabled
+  qosClass: Burstable
+spec:
+  volumes:
+    - name: workload-socket
+      emptyDir: {}
+    - name: credential-socket
+      emptyDir: {}
+    - name: workload-certs
+      emptyDir: {}
+    - name: istio-envoy
+      emptyDir:
+        medium: Memory
+    - name: istio-data
+      emptyDir: {}
+    - name: istio-podinfo
+      downwardAPI:
+        items:
+          - path: labels
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.labels
+          - path: annotations
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.annotations
+        defaultMode: 420
+    - name: istio-token
+      projected:
+        sources:
+          - serviceAccountToken:
+              audience: istio-ca
+              expirationSeconds: 43200
+              path: istio-token
+        defaultMode: 420
+    - name: istiod-ca-cert
+      configMap:
+        name: istio-ca-root-cert
+        defaultMode: 420
+    - name: kube-api-access-xgp7z
+      projected:
+        sources:
+          - serviceAccountToken:
+              expirationSeconds: 3607
+              path: token
+          - configMap:
+              name: kube-root-ca.crt
+              items:
+                - key: ca.crt
+                  path: ca.crt
+          - downwardAPI:
+              items:
+                - path: namespace
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.namespace
+        defaultMode: 420
+  initContainers:
+    - name: istio-validation
+      image: docker.io/istio/proxyv2:1.26.2
+      args:
+        - istio-iptables
+        - '-p'
+        - '15001'
+        - '-z'
+        - '15006'
+        - '-u'
+        - '1337'
+        - '-m'
+        - REDIRECT
+        - '-i'
+        - '*'
+        - '-x'
+        - ''
+        - '-b'
+        - '*'
+        - '-d'
+        - 15090,15021,15020
+        - '--log_output_level=default:info'
+        - '--run-validation'
+        - '--skip-rule-apply'
+      env:
+        - name: ISTIO_META_CNI_ENABLED
+          value: 'true'
+      resources:
+        limits:
+          cpu: '2'
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      volumeMounts:
+        - name: kube-api-access-xgp7z
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      imagePullPolicy: IfNotPresent
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        privileged: false
+        runAsUser: 1337
+        runAsGroup: 1337
+        runAsNonRoot: true
+        readOnlyRootFilesystem: true
+        allowPrivilegeEscalation: false
+  containers:
+    - name: web
+      image: gcr.io/tetratelabs/web-frontend:1.0.0
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      env:
+        - name: CUSTOMER_SERVICE_URL
+          value: http://customers.app3.svc.cluster.local
+      resources: {}
+      volumeMounts:
+        - name: kube-api-access-xgp7z
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      imagePullPolicy: Always
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        privileged: false
+        readOnlyRootFilesystem: true
+        allowPrivilegeEscalation: false
+    - name: istio-proxy
+      image: docker.io/istio/proxyv2:1.26.2
+      args:
+        - proxy
+        - sidecar
+        - '--domain'
+        - $(POD_NAMESPACE).svc.cluster.local
+        - '--proxyLogLevel=warning'
+        - '--proxyComponentLogLevel=misc:error'
+        - '--log_output_level=default:info'
+      ports:
+        - name: http-envoy-prom
+          containerPort: 15090
+          protocol: TCP
+      env:
+        - name: PILOT_CERT_PROVIDER
+          value: istiod
+        - name: CA_ADDR
+          value: istiod.istio-system.svc:15012
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: INSTANCE_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        - name: SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.serviceAccountName
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        - name: ISTIO_CPU_LIMIT
+          valueFrom:
+            resourceFieldRef:
+              resource: limits.cpu
+              divisor: '0'
+        - name: PROXY_CONFIG
+          value: |
+            {"proxyMetadata":{"ISTIO_META_CNI_ENABLED":"true"}}
+        - name: ISTIO_META_POD_PORTS
+          value: |-
+            [
+                {"containerPort":8080,"protocol":"TCP"}
+            ]
+        - name: ISTIO_META_APP_CONTAINERS
+          value: web
+        - name: GOMEMLIMIT
+          valueFrom:
+            resourceFieldRef:
+              resource: limits.memory
+              divisor: '0'
+        - name: GOMAXPROCS
+          valueFrom:
+            resourceFieldRef:
+              resource: limits.cpu
+              divisor: '0'
+        - name: ISTIO_META_CLUSTER_ID
+          value: Kubernetes
+        - name: ISTIO_META_NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        - name: ISTIO_META_INTERCEPTION_MODE
+          value: REDIRECT
+        - name: ISTIO_META_WORKLOAD_NAME
+          value: web-frontend
+        - name: ISTIO_META_OWNER
+          value: kubernetes://apis/apps/v1/namespaces/app3/deployments/web-frontend
+        - name: ISTIO_META_MESH_ID
+          value: cluster.local
+        - name: TRUST_DOMAIN
+          value: cluster.local
+        - name: ISTIO_META_CNI_ENABLED
+          value: 'true'
+      resources:
+        limits:
+          cpu: '2'
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      volumeMounts:
+        - name: workload-socket
+          mountPath: /var/run/secrets/workload-spiffe-uds
+        - name: credential-socket
+          mountPath: /var/run/secrets/credential-uds
+        - name: workload-certs
+          mountPath: /var/run/secrets/workload-spiffe-credentials
+        - name: istiod-ca-cert
+          mountPath: /var/run/secrets/istio
+        - name: istio-data
+          mountPath: /var/lib/istio/data
+        - name: istio-envoy
+          mountPath: /etc/istio/proxy
+        - name: istio-token
+          mountPath: /var/run/secrets/tokens
+        - name: istio-podinfo
+          mountPath: /etc/istio/pod
+        - name: kube-api-access-xgp7z
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      readinessProbe:
+        httpGet:
+          path: /healthz/ready
+          port: 15021
+          scheme: HTTP
+        timeoutSeconds: 3
+        periodSeconds: 15
+        successThreshold: 1
+        failureThreshold: 4
+      startupProbe:
+        httpGet:
+          path: /healthz/ready
+          port: 15021
+          scheme: HTTP
+        timeoutSeconds: 3
+        periodSeconds: 1
+        successThreshold: 1
+        failureThreshold: 600
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      imagePullPolicy: IfNotPresent
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        privileged: false
+        runAsUser: 1337
+        runAsGroup: 1337
+        runAsNonRoot: true
+        readOnlyRootFilesystem: true
+        allowPrivilegeEscalation: false
+  restartPolicy: Always
+  terminationGracePeriodSeconds: 30
+  dnsPolicy: ClusterFirst
+  serviceAccountName: web-frontend
+  serviceAccount: web-frontend
+  nodeName: minikube
+  securityContext: {}
+  schedulerName: default-scheduler
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+  priority: 0
+  enableServiceLinks: true
+  preemptionPolicy: PreemptLowerPriority
