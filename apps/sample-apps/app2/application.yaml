@@ -42,3 +42,16 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+
+
+##        securityContext:
+##          allowPrivilegeEscalation: false
+##          runAsNonRoot: true
+##          runAsUser: 1001
+##          runAsGroup: 1001
+##          capabilities:
+##            drop:
+##            - ALL
+##          seccompProfile:
+##            type: RuntimeDefault
+##          readOnlyRootFilesystem: true
