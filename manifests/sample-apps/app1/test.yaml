@@ -108,18 +108,21 @@ spec:
         - containerPort: 3000
         securityContext:
           allowPrivilegeEscalation: false
+          runAsNonRoot: true
           capabilities:
             drop:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-          resources:
-        requests:
-          cpu: 10m
-          memory: 32Mi
-        limits:
-          cpu: 50m
-          memory: 64Mi
+          seccompProfile:
+            type: RuntimeDefault
+        resources:
+          requests:
+            cpu: 10m
+            memory: 32Mi
+          limits:
+            cpu: 50m
+            memory: 64Mi
 ---
 # Source: app1/templates/sleep.yaml
 apiVersion: apps/v1
@@ -143,6 +146,23 @@ spec:
         image: curlimages/curl
         command: ["/bin/sleep", "infinity"]
         imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 10m
+            memory: 32Mi
+          limits:
+            cpu: 50m
+            memory: 64Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          capabilities:
+            drop:
+              - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
         volumeMounts:
         - mountPath: /etc/sleep/tls
           name: secret-volume
@@ -175,6 +195,13 @@ spec:
       - name: web
         image: gcr.io/tetratelabs/web-frontend:1.0.0
         imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 10m
+            memory: 32Mi
+          limits:
+            cpu: 50m
+            memory: 64Mi
         ports:
         - containerPort: 8080
         env:
@@ -182,11 +209,14 @@ spec:
           value: "http://customers.default.svc.cluster.local"
         securityContext:
           allowPrivilegeEscalation: false
+          runAsNonRoot: true
           capabilities:
             drop:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
 ---
 # Source: app1/templates/gateway.yaml
 # gateway.yaml
@@ -242,4 +272,22 @@ spec:
       image: busybox
       command: ['wget']
       args: ['app1:80']
+      resources:
+        requests:
+          cpu: 5m
+          memory: 32Mi
+        limits:
+          cpu: 8m
+          memory: 64Mi
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        seccompProfile:
+          type: RuntimeDefault
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
   restartPolicy: Never

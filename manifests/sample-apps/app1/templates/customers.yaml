@@ -32,18 +32,21 @@ spec:
         - containerPort: 3000
         securityContext:
           allowPrivilegeEscalation: false
+          runAsNonRoot: true
           capabilities:
             drop:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-          resources:
-        requests:
-          cpu: {{ .Values.resources.requests.cpu }}
-          memory: {{ .Values.resources.requests.memory }}
-        limits:
-          cpu: {{ .Values.resources.limits.cpu }}
-          memory: {{ .Values.resources.limits.memory }}
+          seccompProfile:
+            type: RuntimeDefault
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
 ---
 kind: Service
 apiVersion: v1

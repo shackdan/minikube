@@ -26,6 +26,13 @@ spec:
       - name: web
         image: gcr.io/tetratelabs/web-frontend:1.0.0
         imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
         ports:
         - containerPort: 8080
         env:
@@ -33,11 +40,14 @@ spec:
           value: "http://customers.{{ .Release.Namespace }}.svc.cluster.local"
         securityContext:
           allowPrivilegeEscalation: false
+          runAsNonRoot: true
           capabilities:
             drop:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
 ---
 kind: Service
 apiVersion: v1

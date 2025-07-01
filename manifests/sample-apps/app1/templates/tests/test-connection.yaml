@@ -11,5 +11,23 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "app1.fullname" . }}:{{ .Values.service.port }}']
+      args: ['app1:80']
+      resources:
+        requests:
+          cpu: 5m
+          memory: 32Mi
+        limits:
+          cpu: 8m
+          memory: 64Mi
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        seccompProfile:
+          type: RuntimeDefault
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
   restartPolicy: Never
