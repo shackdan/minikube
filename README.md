@@ -60,13 +60,37 @@ kubectl apply -f ./manifests/metalLB/ip-pool.yaml
 
 ## Test "external" access
 ### port forward
-kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8081:80
+Open a separate shell and run:
+```minikube tunnel``` 
+Note: this will prompt for sudo access on local
 
 ### Deploy Obeervability Tools
 Apply manifests
 ```
 kubectl apply -f ./manifests/
 kubectl rollout status deployment/kiali -n istio-system
+```
+
+### prep hosts file
+```sudo vi /etc/hosts```
+
+Add the appropriate hostname mapping to point to loopback/127.0.0.1:
+```
+cat /etc/hosts
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+::1             localhost
+127.0.0.1       app2.thenewtonlab.com
+127.0.0.1       app1.thenewtonlab.com
+127.0.0.1       demo.thenewtonlab.com
+127.0.0.1       demo2.thenewtonlab.com
+127.0.0.1       helloworld.thenewtonlab.com
 ```
 
 ### view traffic flow
@@ -90,7 +114,14 @@ curl -v -H "Host: demo2.thenewtonlab.com" http://<INGRESS_IP>
 
 while true; do curl -I http://$GATEWAY_IP; sleep 0.5; done
 
-while true; do curl -I http://10.97.69.155; sleep 0.5; done
+while true; do curl -I http://fqdn-serivehost.com; sleep 0.5; done
 
 
 kubectl get pod web-frontend-5978cf9cc6-tbdzc -n test -o jsonpath='{.status.containerStatuses[?(@.name=="web")].lastState.terminated.exitCode}'
+
+
+kubectl run -it --rm debug --image=curlimages/curl -- sh
+# Once inside the pod
+curl -v -H "Host: demo2.thenewtonlab.com" http://istio-ingressgateway.istio-ingress.svc.cluster.local
+# Or directly to the IP
+curl -v -H "Host: demo2.thenewtonlab.com" http://192.168.49.240
