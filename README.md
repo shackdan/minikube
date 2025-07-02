@@ -39,7 +39,7 @@ argocd cluster add minikube --in-cluster
 kubectl create secret generic github-ssh-key --from-file=sshPrivateKey=$HOME/.ssh/argocd_rsa -n argocd
 argocd repo add git@github.com:shackdan/minikube.git --ssh-private-key-path ~/.ssh/argocd_rsa
 ```
-Access Argo site via https://localhost:8080
+Access Argo site via https://localhost:8080 (optional to get visual access)
 Accept SSL security warning and continue to site.
 Use Admin and password from previous step to login.
 Note no applications are present.
@@ -53,9 +53,9 @@ kubectl apply -f ./bootstrap/root-app.yaml
 
 
 ## Add metallb
-minikube addon enable metallb
+minikube addons enable metallb
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
-kubectl rollout status deployment/controller -n metallb
+kubectl rollout status deployment/controller -n metallb-system
 kubectl apply -f ./manifests/metalLB/ip-pool.yaml
 
 ## Test "external" access
@@ -65,9 +65,9 @@ Open a separate shell and run:
 Note: this will prompt for sudo access on local
 
 ### Deploy Obeervability Tools
-Apply manifests
+Return to previous shell and apply manifests
 ```
-kubectl apply -f ./manifests/
+kubectl apply -f ./manifests/istio-addons
 kubectl rollout status deployment/kiali -n istio-system
 ```
 
@@ -96,7 +96,7 @@ cat /etc/hosts
 ### view traffic flow
 Create external traffic buy running curl from local shell
 
-```while true; do curl -I http://demo2.thenewtonlab.com; sleep 0.5; done```
+```while true; do curl -I http://demo2.thenewtonlab.com; sleep 3; done```
 
 istioctl dashboard kiali
 
