@@ -24,7 +24,7 @@ spec:
             memory: "128Mi"
   destination:
     server: https://kubernetes.default.svc
-    namespace: app3
+    namespace: team-a
   syncPolicy:
     automated:
       prune: true
